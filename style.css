@@ -1991,78 +1991,145 @@ img {
         9px;
 }
 
-/* =========================
-   VIDÉOS
-========================= */
+/* =========================================
+   SECTION VIDÉOS
+========================================= */
 
-.videos-grid {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 30px;
+.videos {
+    padding: 70px 4%;
+}
 
-    max-width: 1100px;
+.videos-container {
+    width: 100%;
+    max-width: 1200px;
     margin: 0 auto;
 }
 
-.video-card {
+.videos-header {
+    margin-bottom: 30px;
+}
+
+
+/* =========================================
+   GRILLE VIDÉOS
+========================================= */
+
+.videos-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 30px;
+
     width: 100%;
 }
 
+
+/* =========================================
+   CARTE
+========================================= */
+
+.video-card {
+    width: 100%;
+
+    background: #0d0d1f;
+
+    border: 1px solid #292947;
+    border-radius: 15px;
+
+    overflow: hidden;
+}
+
+
+/* =========================================
+   LECTEUR VIDÉO
+========================================= */
+
 .video-player {
-    width: 20%;
+    width: 100%;
+
     aspect-ratio: 16 / 9;
 
     background: #000;
 
-    border-radius: 15px;
     overflow: hidden;
 }
 
 .video-player video {
+    display: block;
+
     width: 100%;
     height: 100%;
 
-    display: block;
     object-fit: contain;
 }
 
 
-/* =========================
+/* =========================================
+   INFORMATIONS VIDÉO
+========================================= */
+
+.video-info {
+    padding: 20px;
+}
+
+.video-number {
+    color: #c06cff;
+
+    font-size: 12px;
+    font-weight: bold;
+
+    letter-spacing: 1px;
+}
+
+.video-info h3 {
+    margin-top: 7px;
+    margin-bottom: 8px;
+}
+
+.video-info p {
+    color: #9c9caf;
+
+    line-height: 1.5;
+}
+
+
+/* =========================================
    TABLETTE
-========================= */
+========================================= */
 
 @media (max-width: 900px) {
 
     .videos-grid {
         grid-template-columns: 1fr;
-        max-width: 650px;
     }
 
 }
 
 
-/* =========================
+/* =========================================
    MOBILE
-========================= */
+========================================= */
 
 @media (max-width: 600px) {
 
     .videos {
-        padding-left: 20px;
-        padding-right: 20px;
+        padding: 50px 20px;
+    }
+
+    .videos-header {
+        margin-bottom: 20px;
     }
 
     .videos-grid {
-        max-width: 100%;
+        grid-template-columns: 1fr;
+
         gap: 20px;
     }
 
-    .video-card {
-        width: 100%;
-    }
-
-    .video-player {
-        border-radius: 10px;
+    .video-info {
+        padding: 15px;
     }
 
 }
