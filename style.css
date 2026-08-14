@@ -2009,7 +2009,7 @@ img {
 }
 
 .video-player {
-    width: 100%;
+    width: 20%;
     aspect-ratio: 16 / 9;
 
     background: #000;
