@@ -31,29 +31,7 @@
             Se connecter
         </button>
     </div>
-
-
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <script src="js/supabase.js"></script>
-    <script src="js/admin.js"></script>
-
-    <script>
-        const boutonConnexion =
-            document.getElementById("bouton-connexion");
-
-        boutonConnexion.addEventListener("click", function () {
-
-            const email =
-                document.getElementById("email").value;
-
-            const motDePasse =
-                document.getElementById("password").value;
-
-            connexionAdmin(email, motDePasse);
-        });
-    </script>
-
-<div id="zone-admin" style="display: none;">
+  <div id="zone-admin" style="display: none;">
 
     <h2>Espace administrateur</h2>
 
@@ -79,6 +57,29 @@
     </button>
 
 </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/supabase.js"></script>
+    <script src="js/admin.js"></script>
+
+    <script>
+        const boutonConnexion =
+            document.getElementById("bouton-connexion");
+
+        boutonConnexion.addEventListener("click", function () {
+
+            const email =
+                document.getElementById("email").value;
+
+            const motDePasse =
+                document.getElementById("password").value;
+
+            connexionAdmin(email, motDePasse);
+        });
+    </script>
+
+
 
 </body>
 
