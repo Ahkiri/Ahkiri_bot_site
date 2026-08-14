@@ -1,84 +1,685 @@
-
 <!DOCTYPE html>
 <html lang="fr">
-  
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
     <title>Ahkiri - Administration</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+    <style>
+
+        /* =========================================
+           ADMINISTRATION
+        ========================================== */
+
+        .admin-connexion {
+            min-height: 100vh;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 30px;
+        }
+
+
+        .admin-connexion-contenu {
+            width: 100%;
+            max-width: 450px;
+
+            padding: 35px;
+
+            background: #0d0d1f;
+
+            border:
+                1px solid #292947;
+
+            border-radius: 18px;
+        }
+
+
+        .admin-connexion-contenu h1 {
+            margin-bottom: 10px;
+        }
+
+
+        .admin-connexion-contenu h2 {
+            margin-bottom: 25px;
+
+            color: #c06cff;
+        }
+
+
+        .admin-connexion-contenu input {
+            width: 100%;
+
+            margin-bottom: 15px;
+
+            padding: 14px 16px;
+
+            background: #09091a;
+
+            color: white;
+
+            border:
+                1px solid #292947;
+
+            border-radius: 10px;
+
+            font-size: 16px;
+        }
+
+
+        .admin-connexion-contenu button {
+            width: 100%;
+
+            padding: 14px;
+
+            background: #8d3cff;
+
+            color: white;
+
+            border: none;
+
+            border-radius: 10px;
+
+            font-size: 16px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+        }
+
+
+        .admin-connexion-contenu button:hover {
+            background: #c06cff;
+        }
+
+
+        /* =========================================
+           ZONE ADMIN
+        ========================================== */
+
+        #zone-admin {
+            display: none;
+        }
+
+
+        .barre-admin {
+            position: sticky;
+
+            top: 0;
+
+            z-index: 5000;
+
+            min-height: 60px;
+
+            padding:
+                10px 3%;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 20px;
+
+            background: #080813;
+
+            border-bottom:
+                1px solid #8d3cff;
+        }
+
+
+        .barre-admin h2 {
+            color: #c06cff;
+
+            font-size: 18px;
+        }
+
+
+        .barre-admin span {
+            color: #56ff87;
+
+            font-size: 14px;
+        }
+
+
+        .bouton-deconnexion {
+            padding:
+                10px 16px;
+
+            background: transparent;
+
+            color: white;
+
+            border:
+                1px solid #ff5c74;
+
+            border-radius: 8px;
+
+            cursor: pointer;
+        }
+
+
+        /* =========================================
+           APERÇU DU SITE
+        ========================================== */
+
+        .admin-apercu {
+            padding:
+                40px 3%;
+        }
+
+
+        .admin-apercu h2 {
+            margin-bottom: 20px;
+
+            color: white;
+        }
+
+
+        .cadre-site {
+            width: 100%;
+            height: 750px;
+
+            background: white;
+
+            border:
+                1px solid #292947;
+
+            border-radius: 15px;
+
+            overflow: hidden;
+        }
+
+
+        .cadre-site iframe {
+            width: 100%;
+            height: 100%;
+
+            border: none;
+        }
+
+
+        /* =========================================
+           GESTION VIDÉOS
+        ========================================== */
+
+        .admin-videos {
+            margin:
+                30px 3% 80px;
+
+            padding: 35px;
+
+            background: #0d0d1f;
+
+            border:
+                1px solid #292947;
+
+            border-radius: 18px;
+        }
+
+
+        .admin-videos h2 {
+            margin-bottom: 10px;
+
+            color: #c06cff;
+        }
+
+
+        .admin-videos > p {
+            margin-bottom: 25px;
+
+            color: #9c9caf;
+        }
+
+
+        .formulaire-video {
+            display: grid;
+
+            gap: 15px;
+
+            max-width: 700px;
+        }
+
+
+        .formulaire-video label {
+            font-weight: bold;
+
+            color: white;
+        }
+
+
+        .formulaire-video input,
+        .formulaire-video textarea {
+            width: 100%;
+
+            padding: 14px;
+
+            background: #09091a;
+
+            color: white;
+
+            border:
+                1px solid #292947;
+
+            border-radius: 10px;
+
+            font-family: Arial, sans-serif;
+
+            font-size: 15px;
+        }
+
+
+        .formulaire-video textarea {
+            min-height: 130px;
+
+            resize: vertical;
+        }
+
+
+        #publier-video {
+            width: fit-content;
+
+            padding:
+                14px 25px;
+
+            background: #8d3cff;
+
+            color: white;
+
+            border: none;
+
+            border-radius: 10px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+        }
+
+
+        #publier-video:hover {
+            background: #c06cff;
+        }
+
+
+        #message-video {
+            margin-top: 15px;
+        }
+
+
+        /* =========================================
+           LISTE DES VIDÉOS ADMIN
+        ========================================== */
+
+        .videos-publiees {
+            margin-top: 45px;
+        }
+
+
+        .videos-publiees h3 {
+            margin-bottom: 20px;
+
+            color: white;
+        }
+
+
+        #liste-videos-admin {
+            display: grid;
+
+            grid-template-columns:
+                repeat(
+                    auto-fit,
+                    minmax(280px, 1fr)
+                );
+
+            gap: 20px;
+        }
+
+
+        @media (max-width: 700px) {
+
+            .barre-admin {
+                flex-direction: column;
+
+                align-items: flex-start;
+            }
+
+
+            .cadre-site {
+                height: 600px;
+            }
+
+
+            .admin-videos {
+                padding: 22px;
+            }
+
+        }
+
+    </style>
 </head>
+
 
 <body>
 
-    <h1>Administration Ahkiri</h1>
 
-    <div id="connexion">
-        <h2>Connexion</h2>
+    <!-- =========================================
+         CONNEXION ADMIN
+    ========================================== -->
 
-        <input
-            type="email"
-            id="email"
-            placeholder="Adresse e-mail"
-        >
+    <div
+        id="connexion"
+        class="admin-connexion"
+    >
 
-        <input
-            type="password"
-            id="password"
-            placeholder="Mot de passe"
-        >
+        <div class="admin-connexion-contenu">
 
-        <button id="bouton-connexion">
-            Se connecter
-        </button>
+            <h1>
+                🤖 AHKIRI BOT
+            </h1>
+
+            <h2>
+                Administration
+            </h2>
+
+
+            <input
+                type="email"
+                id="email"
+                placeholder="Adresse e-mail"
+                autocomplete="email"
+            >
+
+
+            <input
+                type="password"
+                id="password"
+                placeholder="Mot de passe"
+                autocomplete="current-password"
+            >
+
+
+            <button id="bouton-connexion">
+                Se connecter
+            </button>
+
+        </div>
+
     </div>
-  <div id="zone-admin" style="display: none;">
-
-    <h2>Espace administrateur</h2>
-
-    <input
-        type="text"
-        id="titre-video"
-        placeholder="Titre de la vidéo"
-    >
-
-    <textarea
-        id="description-video"
-        placeholder="Description de la vidéo">
-    </textarea>
-
-    <input
-        type="file"
-        id="fichier-video"
-        accept="video/*"
-    >
-
-    <button id="publier-video">
-        Publier la vidéo
-    </button>
-
-</div>
 
 
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <script src="js/supabase.js"></script>
-    <script src="js/admin.js"></script>
 
-    <script>
-        const boutonConnexion =
-            document.getElementById("bouton-connexion");
+    <!-- =========================================
+         ESPACE ADMINISTRATEUR
+    ========================================== -->
 
-        boutonConnexion.addEventListener("click", function () {
+    <div id="zone-admin">
 
-            const email =
-                document.getElementById("email").value;
 
-            const motDePasse =
-                document.getElementById("password").value;
+        <!-- BARRE ADMIN -->
 
-            connexionAdmin(email, motDePasse);
-        });
+        <div class="barre-admin">
+
+            <div>
+
+                <h2>
+                    ⚙ Administration Ahkiri
+                </h2>
+
+                <span>
+                    ● Connecté
+                </span>
+
+            </div>
+
+
+            <button
+                id="bouton-deconnexion"
+                class="bouton-deconnexion"
+            >
+                Se déconnecter
+            </button>
+
+        </div>
+
+
+
+        <!-- =====================================
+             APERÇU DU SITE PUBLIC
+        ====================================== -->
+
+        <section class="admin-apercu">
+
+            <h2>
+                👁 Aperçu du site
+            </h2>
+
+            <div class="cadre-site">
+
+                <iframe
+                    src="index.html"
+                    title="Aperçu du site Ahkiri"
+                ></iframe>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================
+             SECTION VIDÉOS
+        ====================================== -->
+
+        <section
+            class="admin-videos"
+            id="admin-videos"
+        >
+
+            <h2>
+                🎬 Gestion des vidéos
+            </h2>
+
+            <p>
+                Publie ici les vidéos qui seront
+                affichées sur le site Ahkiri.
+            </p>
+
+
+            <div class="formulaire-video">
+
+
+                <label for="titre-video">
+                    Titre
+                </label>
+
+                <input
+                    type="text"
+                    id="titre-video"
+                    placeholder="Titre de la vidéo"
+                >
+
+
+
+                <label for="description-video">
+                    Description
+                </label>
+
+                <textarea
+                    id="description-video"
+                    placeholder="Description de la vidéo"
+                ></textarea>
+
+
+
+                <label for="fichier-video">
+                    Fichier vidéo
+                </label>
+
+                <input
+                    type="file"
+                    id="fichier-video"
+                    accept="video/*"
+                >
+
+
+
+                <button id="publier-video">
+                    📤 Publier la vidéo
+                </button>
+
+            </div>
+
+
+            <p id="message-video"></p>
+
+
+
+            <!-- VIDÉOS DÉJÀ PUBLIÉES -->
+
+            <div class="videos-publiees">
+
+                <h3>
+                    Vidéos publiées
+                </h3>
+
+                <div id="liste-videos-admin">
+
+                    <!--
+                    Les vidéos seront ajoutées ici
+                    automatiquement avec JavaScript.
+                    -->
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+    </div>
+
+
+
+    <!-- =========================================
+         SUPABASE
+    ========================================== -->
+
+    <script
+        src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2">
     </script>
 
+    <script src="js/supabase.js"></script>
+
+    <script src="js/admin.js"></script>
+
+
+
+    <!-- =========================================
+         CONNEXION / DÉCONNEXION
+    ========================================== -->
+
+    <script>
+
+        const boutonConnexion =
+            document.getElementById(
+                "bouton-connexion"
+            );
+
+
+        boutonConnexion.addEventListener(
+            "click",
+            function () {
+
+                const email =
+                    document
+                        .getElementById("email")
+                        .value;
+
+                const motDePasse =
+                    document
+                        .getElementById("password")
+                        .value;
+
+
+                connexionAdmin(
+                    email,
+                    motDePasse
+                );
+
+            }
+        );
+
+
+
+        /*
+        Permet également de valider
+        avec la touche Entrée.
+        */
+
+        document
+            .getElementById("password")
+            .addEventListener(
+                "keydown",
+                function (event) {
+
+                    if (event.key === "Enter") {
+
+                        boutonConnexion.click();
+
+                    }
+
+                }
+            );
+
+
+
+        /*
+        Déconnexion
+        */
+
+        const boutonDeconnexion =
+            document.getElementById(
+                "bouton-deconnexion"
+            );
+
+
+        boutonDeconnexion.addEventListener(
+            "click",
+            async function () {
+
+                await clientSupabase
+                    .auth
+                    .signOut();
+
+
+                document
+                    .getElementById("zone-admin")
+                    .style
+                    .display = "none";
+
+
+                document
+                    .getElementById("connexion")
+                    .style
+                    .display = "flex";
+
+            }
+        );
+
+    </script>
 
 
 </body>
