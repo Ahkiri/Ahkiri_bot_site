@@ -1991,6 +1991,42 @@ img {
         9px;
 }
 
+/* =========================
+   SECTION VIDÉOS
+========================= */
+
+.video-player {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: #000;
+    overflow: hidden;
+}
+
+.video-player video {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 768px) {
+
+    .videos {
+        padding: 70px 5%;
+    }
+
+    .videos-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .videos-header h2 {
+        font-size: 2rem;
+    }
+}
+
 
 /* =========================================
    RESPONSIVE
