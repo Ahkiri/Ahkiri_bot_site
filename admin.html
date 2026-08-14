@@ -1,3 +1,58 @@
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="js/supabase.js"></script>
-<script src="js/admin.js"></script>
+
+<!DOCTYPE html>
+<html lang="fr">
+  
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ahkiri - Administration</title>
+</head>
+
+<body>
+
+    <h1>Administration Ahkiri</h1>
+
+    <div id="connexion">
+        <h2>Connexion</h2>
+
+        <input
+            type="email"
+            id="email"
+            placeholder="Adresse e-mail"
+        >
+
+        <input
+            type="password"
+            id="password"
+            placeholder="Mot de passe"
+        >
+
+        <button id="bouton-connexion">
+            Se connecter
+        </button>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/supabase.js"></script>
+    <script src="js/admin.js"></script>
+
+    <script>
+        const boutonConnexion =
+            document.getElementById("bouton-connexion");
+
+        boutonConnexion.addEventListener("click", function () {
+
+            const email =
+                document.getElementById("email").value;
+
+            const motDePasse =
+                document.getElementById("password").value;
+
+            connexionAdmin(email, motDePasse);
+        });
+    </script>
+
+</body>
+
+</html>
